@@ -1,0 +1,57 @@
+name: build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: '10.0.x'
+    - name: Build
+      shell: pwsh
+      run: |
+        $version = if ($env:GITHUB_REF -like "refs/tags/v*") {
+          $env:GITHUB_REF -replace "refs/tags/v", ""
+        } else {
+          "0.0.0-$($env:GITHUB_SHA.Substring(0, 7))"
+        }
+        dotnet publish -c Release -p:Version=$version
+    - name: Create artifact
+      shell: pwsh
+      run: |
+        Push-Location bin\Release\net10.0-windows\win-x64\publish
+        &"C:\Program Files\7-Zip\7z.exe" `
+          a `
+          -r `
+          -tzip `
+          -mx=9 `
+          ..\..\..\..\..\WindowsKioskTestApp.zip `
+          .
+        Pop-Location
+    - name: Upload artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: WindowsKioskTestApp
+        path: WindowsKioskTestApp.zip
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    name: Release
+    runs-on: ubuntu-24.04
+    needs:
+      - build
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v8
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          artifacts: '*.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
