@@ -55,7 +55,7 @@ partial class MainForm
         exitRestartDeviceButton.Location = new Point(12, 129);
         exitRestartDeviceButton.Name = "exitRestartDeviceButton";
         exitRestartDeviceButton.Size = new Size(212, 33);
-        exitRestartDeviceButton.TabIndex = 1;
+        exitRestartDeviceButton.TabIndex = 3;
         exitRestartDeviceButton.Text = "Exit -1 (restart the device)";
         exitRestartDeviceButton.UseVisualStyleBackColor = true;
         exitRestartDeviceButton.Click += ExitRestartDeviceButton_Click;
@@ -75,7 +75,7 @@ partial class MainForm
         exitDoNothingButton.Location = new Point(12, 51);
         exitDoNothingButton.Name = "exitDoNothingButton";
         exitDoNothingButton.Size = new Size(212, 33);
-        exitDoNothingButton.TabIndex = 3;
+        exitDoNothingButton.TabIndex = 1;
         exitDoNothingButton.Text = "Exit 1 (do nothing)";
         exitDoNothingButton.UseVisualStyleBackColor = true;
         exitDoNothingButton.Click += ExitDoNothingButton_Click;
