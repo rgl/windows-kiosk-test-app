@@ -7,6 +7,11 @@ public partial class MainForm : Form
     public MainForm()
     {
         InitializeComponent();
+
+        if (Environment.UserName.Contains("kiosk", StringComparison.InvariantCultureIgnoreCase))
+        {
+            FormBorderStyle = FormBorderStyle.None;
+        }
     }
 
     // see https://learn.microsoft.com/en-us/windows/configuration/shell-launcher/configure?tabs=powershell1%2Cps#shell-launcher-startup-and-exit-behavior
