@@ -24,13 +24,14 @@ jobs:
       - name: Create artifact
         shell: pwsh
         run: |
+          $artifactPath = "$PWD\WindowsKioskTestApp.zip"
           Push-Location bin\Release\net10.0-windows\win-x64\publish
           &"C:\Program Files\7-Zip\7z.exe" `
             a `
             -r `
             -tzip `
             -mx=9 `
-            ..\..\..\..\..\WindowsKioskTestApp.zip `
+            $artifactPath `
             .
           Pop-Location
       - name: Upload artifact
