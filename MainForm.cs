@@ -29,7 +29,7 @@ public partial class MainForm : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"An error occurred: {ex.Message}");
+            MessageBox.Show($"Failed to start {path}: {ex.Message}", "Failed to start", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
