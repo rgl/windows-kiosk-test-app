@@ -38,113 +38,148 @@ partial class MainForm
         startPowerShellButton = new Button();
         startRegistryEditorButton = new Button();
         startFileExplorerButton = new Button();
+        customCommandTextBox = new TextBox();
+        startLabel = new Label();
+        exitLabel = new Label();
         SuspendLayout();
-        //
+        // 
         // exitRestartShellButton
-        //
-        exitRestartShellButton.Location = new Point(12, 12);
+        // 
+        exitRestartShellButton.Location = new Point(58, 98);
         exitRestartShellButton.Name = "exitRestartShellButton";
-        exitRestartShellButton.Size = new Size(212, 33);
-        exitRestartShellButton.TabIndex = 0;
-        exitRestartShellButton.Text = "Exit 0 (restart the shell)";
+        exitRestartShellButton.Size = new Size(115, 33);
+        exitRestartShellButton.TabIndex = 9;
+        exitRestartShellButton.Text = "0 (restart the shell)";
         exitRestartShellButton.UseVisualStyleBackColor = true;
         exitRestartShellButton.Click += ExitRestartShellButton_Click;
-        //
+        // 
         // exitRestartDeviceButton
-        //
-        exitRestartDeviceButton.Location = new Point(12, 129);
+        // 
+        exitRestartDeviceButton.Location = new Point(443, 98);
         exitRestartDeviceButton.Name = "exitRestartDeviceButton";
-        exitRestartDeviceButton.Size = new Size(212, 33);
-        exitRestartDeviceButton.TabIndex = 3;
-        exitRestartDeviceButton.Text = "Exit -1 (restart the device)";
+        exitRestartDeviceButton.Size = new Size(131, 33);
+        exitRestartDeviceButton.TabIndex = 12;
+        exitRestartDeviceButton.Text = "-1 (restart the device)";
         exitRestartDeviceButton.UseVisualStyleBackColor = true;
         exitRestartDeviceButton.Click += ExitRestartDeviceButton_Click;
-        //
+        // 
         // exitShutdownDeviceButton
-        //
-        exitShutdownDeviceButton.Location = new Point(12, 90);
+        // 
+        exitShutdownDeviceButton.Location = new Point(280, 98);
         exitShutdownDeviceButton.Name = "exitShutdownDeviceButton";
-        exitShutdownDeviceButton.Size = new Size(212, 33);
-        exitShutdownDeviceButton.TabIndex = 2;
-        exitShutdownDeviceButton.Text = "Exit 255 (shut down the device)";
+        exitShutdownDeviceButton.Size = new Size(157, 33);
+        exitShutdownDeviceButton.TabIndex = 11;
+        exitShutdownDeviceButton.Text = "255 (shut down the device)";
         exitShutdownDeviceButton.UseVisualStyleBackColor = true;
         exitShutdownDeviceButton.Click += ExitShutdownDeviceButton_Click;
-        //
+        // 
         // exitDoNothingButton
-        //
-        exitDoNothingButton.Location = new Point(12, 51);
+        // 
+        exitDoNothingButton.Location = new Point(179, 98);
         exitDoNothingButton.Name = "exitDoNothingButton";
-        exitDoNothingButton.Size = new Size(212, 33);
-        exitDoNothingButton.TabIndex = 1;
-        exitDoNothingButton.Text = "Exit 1 (do nothing)";
+        exitDoNothingButton.Size = new Size(97, 33);
+        exitDoNothingButton.TabIndex = 10;
+        exitDoNothingButton.Text = "1 (do nothing)";
         exitDoNothingButton.UseVisualStyleBackColor = true;
         exitDoNothingButton.Click += ExitDoNothingButton_Click;
-        //
+        // 
         // startCalculatorButton
-        //
-        startCalculatorButton.Location = new Point(12, 181);
+        // 
+        startCalculatorButton.Location = new Point(58, 18);
         startCalculatorButton.Name = "startCalculatorButton";
-        startCalculatorButton.Size = new Size(212, 33);
-        startCalculatorButton.TabIndex = 4;
-        startCalculatorButton.Text = "Start Calculator";
+        startCalculatorButton.Size = new Size(73, 33);
+        startCalculatorButton.TabIndex = 1;
+        startCalculatorButton.Text = "Calculator";
         startCalculatorButton.UseVisualStyleBackColor = true;
         startCalculatorButton.Click += StartCalculatorButton_Click;
-        //
+        // 
         // startCommandPromptButton
-        //
-        startCommandPromptButton.Location = new Point(12, 220);
+        // 
+        startCommandPromptButton.Location = new Point(409, 18);
         startCommandPromptButton.Name = "startCommandPromptButton";
-        startCommandPromptButton.Size = new Size(212, 33);
+        startCommandPromptButton.Size = new Size(126, 33);
         startCommandPromptButton.TabIndex = 5;
-        startCommandPromptButton.Text = "Start Command Prompt";
+        startCommandPromptButton.Text = "Command Prompt";
         startCommandPromptButton.UseVisualStyleBackColor = true;
         startCommandPromptButton.Click += StartCommandPromptButton_Click;
-        //
+        // 
         // startWindowsPowerShellButton
-        //
-        startWindowsPowerShellButton.Location = new Point(12, 259);
+        // 
+        startWindowsPowerShellButton.Location = new Point(541, 18);
         startWindowsPowerShellButton.Name = "startWindowsPowerShellButton";
-        startWindowsPowerShellButton.Size = new Size(212, 33);
+        startWindowsPowerShellButton.Size = new Size(135, 33);
         startWindowsPowerShellButton.TabIndex = 6;
-        startWindowsPowerShellButton.Text = "Start Windows PowerShell";
+        startWindowsPowerShellButton.Text = "Windows PowerShell";
         startWindowsPowerShellButton.UseVisualStyleBackColor = true;
         startWindowsPowerShellButton.Click += StartWindowsPowerShellButton_Click;
-        //
+        // 
         // startPowerShellButton
-        //
-        startPowerShellButton.Location = new Point(12, 298);
+        // 
+        startPowerShellButton.Location = new Point(330, 18);
         startPowerShellButton.Name = "startPowerShellButton";
-        startPowerShellButton.Size = new Size(212, 33);
-        startPowerShellButton.TabIndex = 7;
-        startPowerShellButton.Text = "Start PowerShell";
+        startPowerShellButton.Size = new Size(73, 33);
+        startPowerShellButton.TabIndex = 4;
+        startPowerShellButton.Text = "PowerShell";
         startPowerShellButton.UseVisualStyleBackColor = true;
         startPowerShellButton.Click += StartPowerShellButton_Click;
-        //
+        // 
         // startRegistryEditorButton
-        //
-        startRegistryEditorButton.Location = new Point(12, 337);
+        // 
+        startRegistryEditorButton.Location = new Point(137, 18);
         startRegistryEditorButton.Name = "startRegistryEditorButton";
-        startRegistryEditorButton.Size = new Size(212, 33);
-        startRegistryEditorButton.TabIndex = 8;
-        startRegistryEditorButton.Text = "Start Registry Editor";
+        startRegistryEditorButton.Size = new Size(98, 33);
+        startRegistryEditorButton.TabIndex = 2;
+        startRegistryEditorButton.Text = "Registry Editor";
         startRegistryEditorButton.UseVisualStyleBackColor = true;
         startRegistryEditorButton.Click += StartRegistryEditorButton_Click;
-        //
+        // 
         // startFileExplorerButton
-        //
-        startFileExplorerButton.Location = new Point(12, 376);
+        // 
+        startFileExplorerButton.Location = new Point(241, 18);
         startFileExplorerButton.Name = "startFileExplorerButton";
-        startFileExplorerButton.Size = new Size(212, 33);
-        startFileExplorerButton.TabIndex = 9;
-        startFileExplorerButton.Text = "Start File Explorer";
+        startFileExplorerButton.Size = new Size(83, 33);
+        startFileExplorerButton.TabIndex = 3;
+        startFileExplorerButton.Text = "File Explorer";
         startFileExplorerButton.UseVisualStyleBackColor = true;
         startFileExplorerButton.Click += StartFileExplorerButton_Click;
-        //
+        // 
+        // customCommandTextBox
+        // 
+        customCommandTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        customCommandTextBox.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        customCommandTextBox.Location = new Point(58, 57);
+        customCommandTextBox.Name = "customCommandTextBox";
+        customCommandTextBox.PlaceholderText = "Custom Command Command Line";
+        customCommandTextBox.Size = new Size(618, 26);
+        customCommandTextBox.TabIndex = 7;
+        customCommandTextBox.KeyPress += CustomCommandTextBox_KeyPress;
+        // 
+        // startLabel
+        // 
+        startLabel.AutoSize = true;
+        startLabel.Location = new Point(12, 25);
+        startLabel.Name = "startLabel";
+        startLabel.Size = new Size(34, 15);
+        startLabel.TabIndex = 0;
+        startLabel.Text = "Start:";
+        // 
+        // exitLabel
+        // 
+        exitLabel.AutoSize = true;
+        exitLabel.Location = new Point(12, 107);
+        exitLabel.Name = "exitLabel";
+        exitLabel.Size = new Size(28, 15);
+        exitLabel.TabIndex = 8;
+        exitLabel.Text = "Exit:";
+        // 
         // MainForm
-        //
+        // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(695, 146);
+        Controls.Add(exitLabel);
+        Controls.Add(startLabel);
+        Controls.Add(customCommandTextBox);
         Controls.Add(startFileExplorerButton);
         Controls.Add(startRegistryEditorButton);
         Controls.Add(startPowerShellButton);
@@ -158,6 +193,7 @@ partial class MainForm
         Name = "MainForm";
         Text = "Windows Kiosk Test App";
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -172,4 +208,7 @@ partial class MainForm
     private Button startPowerShellButton;
     private Button startRegistryEditorButton;
     private Button startFileExplorerButton;
+    private TextBox customCommandTextBox;
+    private Label startLabel;
+    private Label exitLabel;
 }

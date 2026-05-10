@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace WindowsKioskTestApp;
 
@@ -21,15 +23,17 @@ public partial class MainForm : Form
         Close();
     }
 
-    private static void Start(string path)
+    private static void Start(params string[] args)
     {
+        var fileName = args[0];
+
         try
         {
-            Process.Start(path);
+            Process.Start(fileName, args.Skip(1));
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Failed to start {path}: {ex.Message}", "Failed to start", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Failed to start {fileName}: {ex.Message}", "Failed to start", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
@@ -85,5 +89,40 @@ public partial class MainForm : Form
     private void StartFileExplorerButton_Click(object sender, EventArgs e)
     {
         Start("C:\\Windows\\explorer.exe");
+    }
+
+    private void CustomCommandTextBox_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (e.KeyChar == (char)Keys.Enter)
+        {
+            Start(SplitCommandLine(customCommandTextBox.Text));
+        }
+    }
+
+    [LibraryImport("shell32.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
+    private static partial IntPtr CommandLineToArgvW(string lpCmdLine, out int pNumArgs);
+
+    private static string[] SplitCommandLine(string commandLine)
+    {
+        IntPtr argv = CommandLineToArgvW(commandLine, out int argc);
+        if (argv == IntPtr.Zero)
+        {
+            throw new Win32Exception();
+        }
+
+        try
+        {
+            var args = new string[argc];
+            for (int i = 0; i < argc; i++)
+            {
+                IntPtr p = Marshal.ReadIntPtr(argv, i * IntPtr.Size);
+                args[i] = Marshal.PtrToStringUni(p) ?? "";
+            }
+            return args;
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(argv);
+        }
     }
 }
