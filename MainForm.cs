@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 
 namespace WindowsKioskTestApp;
@@ -14,6 +15,16 @@ public partial class MainForm : Form
         {
             FormBorderStyle = FormBorderStyle.None;
         }
+
+        var helpIconBitmap = new Bitmap(16, 16);
+        using (var g = Graphics.FromImage(helpIconBitmap))
+        {
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.DrawIcon(SystemIcons.Information, new Rectangle(0, 0, helpIconBitmap.Size.Width, helpIconBitmap.Size.Height));
+        }
+        customCommandHelpPictureBox.Image = helpIconBitmap;
+        customCommandHelpPictureBox.Size = helpIconBitmap.Size;
+        customCommandHelpLabel.Location = new Point(customCommandHelpPictureBox.Location.X + customCommandHelpPictureBox.Size.Width, customCommandHelpLabel.Location.Y);
     }
 
     // see https://learn.microsoft.com/en-us/windows/configuration/shell-launcher/configure?tabs=powershell1%2Cps#shell-launcher-startup-and-exit-behavior
@@ -23,13 +34,18 @@ public partial class MainForm : Form
         Close();
     }
 
-    private static void Start(params string[] args)
+    private static void Start(string fileName)
     {
-        var fileName = args[0];
+        Start(new ProcessStartInfo(fileName));
+    }
+
+    private static void Start(ProcessStartInfo pi)
+    {
+        var fileName = pi.FileName;
 
         try
         {
-            Process.Start(fileName, args.Skip(1));
+            Process.Start(pi);
         }
         catch (Exception ex)
         {
@@ -91,11 +107,13 @@ public partial class MainForm : Form
         Start("C:\\Windows\\explorer.exe");
     }
 
-    private void CustomCommandTextBox_KeyPress(object sender, KeyPressEventArgs e)
+    private void CustomCommandTextBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
     {
-        if (e.KeyChar == (char)Keys.Enter)
+        if (e.KeyCode == Keys.Enter)
         {
-            Start(SplitCommandLine(customCommandTextBox.Text));
+            var args = SplitCommandLine(customCommandTextBox.Text);
+
+            Start(new ProcessStartInfo(args[0], args.Skip(1)) { UseShellExecute = e.Control });
         }
     }
 

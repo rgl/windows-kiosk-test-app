@@ -41,11 +41,14 @@ partial class MainForm
         customCommandTextBox = new TextBox();
         startLabel = new Label();
         exitLabel = new Label();
+        customCommandHelpPictureBox = new PictureBox();
+        customCommandHelpLabel = new Label();
+        ((System.ComponentModel.ISupportInitialize)customCommandHelpPictureBox).BeginInit();
         SuspendLayout();
         // 
         // exitRestartShellButton
         // 
-        exitRestartShellButton.Location = new Point(58, 98);
+        exitRestartShellButton.Location = new Point(57, 115);
         exitRestartShellButton.Name = "exitRestartShellButton";
         exitRestartShellButton.Size = new Size(115, 33);
         exitRestartShellButton.TabIndex = 9;
@@ -55,7 +58,7 @@ partial class MainForm
         // 
         // exitRestartDeviceButton
         // 
-        exitRestartDeviceButton.Location = new Point(443, 98);
+        exitRestartDeviceButton.Location = new Point(442, 115);
         exitRestartDeviceButton.Name = "exitRestartDeviceButton";
         exitRestartDeviceButton.Size = new Size(131, 33);
         exitRestartDeviceButton.TabIndex = 12;
@@ -65,7 +68,7 @@ partial class MainForm
         // 
         // exitShutdownDeviceButton
         // 
-        exitShutdownDeviceButton.Location = new Point(280, 98);
+        exitShutdownDeviceButton.Location = new Point(279, 115);
         exitShutdownDeviceButton.Name = "exitShutdownDeviceButton";
         exitShutdownDeviceButton.Size = new Size(157, 33);
         exitShutdownDeviceButton.TabIndex = 11;
@@ -75,7 +78,7 @@ partial class MainForm
         // 
         // exitDoNothingButton
         // 
-        exitDoNothingButton.Location = new Point(179, 98);
+        exitDoNothingButton.Location = new Point(178, 115);
         exitDoNothingButton.Name = "exitDoNothingButton";
         exitDoNothingButton.Size = new Size(97, 33);
         exitDoNothingButton.TabIndex = 10;
@@ -152,7 +155,7 @@ partial class MainForm
         customCommandTextBox.PlaceholderText = "Custom Command Command Line";
         customCommandTextBox.Size = new Size(618, 26);
         customCommandTextBox.TabIndex = 7;
-        customCommandTextBox.KeyPress += CustomCommandTextBox_KeyPress;
+        customCommandTextBox.PreviewKeyDown += CustomCommandTextBox_PreviewKeyDown;
         // 
         // startLabel
         // 
@@ -166,17 +169,36 @@ partial class MainForm
         // exitLabel
         // 
         exitLabel.AutoSize = true;
-        exitLabel.Location = new Point(12, 107);
+        exitLabel.Location = new Point(11, 124);
         exitLabel.Name = "exitLabel";
         exitLabel.Size = new Size(28, 15);
         exitLabel.TabIndex = 8;
         exitLabel.Text = "Exit:";
         // 
+        // customCommandHelpPictureBox
+        // 
+        customCommandHelpPictureBox.Location = new Point(58, 85);
+        customCommandHelpPictureBox.Name = "customCommandHelpPictureBox";
+        customCommandHelpPictureBox.Size = new Size(21, 24);
+        customCommandHelpPictureBox.TabIndex = 13;
+        customCommandHelpPictureBox.TabStop = false;
+        // 
+        // customCommandHelpLabel
+        // 
+        customCommandHelpLabel.AutoSize = true;
+        customCommandHelpLabel.Location = new Point(85, 86);
+        customCommandHelpLabel.Name = "customCommandHelpLabel";
+        customCommandHelpLabel.Size = new Size(468, 15);
+        customCommandHelpLabel.TabIndex = 14;
+        customCommandHelpLabel.Text = "Press Enter to execute with CreateProcess. Press Ctrl+Enter to execute with ShellExecute.";
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(695, 146);
+        ClientSize = new Size(695, 199);
+        Controls.Add(customCommandHelpLabel);
+        Controls.Add(customCommandHelpPictureBox);
         Controls.Add(exitLabel);
         Controls.Add(startLabel);
         Controls.Add(customCommandTextBox);
@@ -192,6 +214,7 @@ partial class MainForm
         Controls.Add(exitRestartShellButton);
         Name = "MainForm";
         Text = "Windows Kiosk Test App";
+        ((System.ComponentModel.ISupportInitialize)customCommandHelpPictureBox).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -211,4 +234,6 @@ partial class MainForm
     private TextBox customCommandTextBox;
     private Label startLabel;
     private Label exitLabel;
+    private PictureBox customCommandHelpPictureBox;
+    private Label customCommandHelpLabel;
 }
