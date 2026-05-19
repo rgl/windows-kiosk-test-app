@@ -24,7 +24,6 @@ public partial class MainForm : Form
         }
         customCommandHelpPictureBox.Image = helpIconBitmap;
         customCommandHelpPictureBox.Size = helpIconBitmap.Size;
-        customCommandHelpLabel.Location = new Point(customCommandHelpPictureBox.Location.X + customCommandHelpPictureBox.Size.Width, customCommandHelpLabel.Location.Y);
     }
 
     // see https://learn.microsoft.com/en-us/windows/configuration/shell-launcher/configure?tabs=powershell1%2Cps#shell-launcher-startup-and-exit-behavior
