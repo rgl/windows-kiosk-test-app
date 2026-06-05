@@ -119,6 +119,9 @@ public partial class MainForm : Form
     [LibraryImport("shell32.dll", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
     private static partial IntPtr CommandLineToArgvW(string lpCmdLine, out int pNumArgs);
 
+    [LibraryImport("kernel32.dll", SetLastError = true)]
+    private static partial IntPtr LocalFree(IntPtr hMem);
+
     private static string[] SplitCommandLine(string commandLine)
     {
         IntPtr argv = CommandLineToArgvW(commandLine, out int argc);
@@ -139,7 +142,7 @@ public partial class MainForm : Form
         }
         finally
         {
-            Marshal.FreeHGlobal(argv);
+            LocalFree(argv);
         }
     }
 }
