@@ -44,7 +44,11 @@ public partial class MainForm : Form
 
         try
         {
-            Process.Start(pi);
+            // TODO see https://github.com/dotnet/runtime/issues/128302
+            // TODO see https://github.com/dotnet/runtime/issues/125838
+            // TODO see https://github.com/dotnet/runtime/pull/126078
+            Process.StartAndForget(pi);
+            //Process.Start(pi);
         }
         catch (Exception ex)
         {
