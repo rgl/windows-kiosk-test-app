@@ -47,6 +47,7 @@ partial class MainForm
         exitDoNothingButton = new Button();
         exitShutdownDeviceButton = new Button();
         exitRestartDeviceButton = new Button();
+        exitThrowExceptionButton = new Button();
         mainTableLayoutPanel.SuspendLayout();
         startFlowLayoutPanel.SuspendLayout();
         customCommandHelpFlowLayoutPanel.SuspendLayout();
@@ -235,9 +236,10 @@ partial class MainForm
         exitFlowLayoutPanel.Controls.Add(exitDoNothingButton);
         exitFlowLayoutPanel.Controls.Add(exitShutdownDeviceButton);
         exitFlowLayoutPanel.Controls.Add(exitRestartDeviceButton);
+        exitFlowLayoutPanel.Controls.Add(exitThrowExceptionButton);
         exitFlowLayoutPanel.Location = new Point(48, 107);
         exitFlowLayoutPanel.Name = "exitFlowLayoutPanel";
-        exitFlowLayoutPanel.Size = new Size(526, 39);
+        exitFlowLayoutPanel.Size = new Size(663, 39);
         exitFlowLayoutPanel.TabIndex = 20;
         // 
         // exitRestartShellButton
@@ -284,6 +286,17 @@ partial class MainForm
         exitRestartDeviceButton.UseVisualStyleBackColor = true;
         exitRestartDeviceButton.Click += ExitRestartDeviceButton_Click;
         // 
+        // exitThrowExceptionButton
+        // 
+        exitThrowExceptionButton.AutoSize = true;
+        exitThrowExceptionButton.Location = new Point(529, 3);
+        exitThrowExceptionButton.Name = "exitThrowExceptionButton";
+        exitThrowExceptionButton.Size = new Size(131, 33);
+        exitThrowExceptionButton.TabIndex = 14;
+        exitThrowExceptionButton.Text = "throw exception";
+        exitThrowExceptionButton.UseVisualStyleBackColor = true;
+        exitThrowExceptionButton.Click += ExitThrowExceptionButton_Click;
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -325,4 +338,5 @@ partial class MainForm
     private Button exitDoNothingButton;
     private Button exitShutdownDeviceButton;
     private Button exitRestartDeviceButton;
+    private Button exitThrowExceptionButton;
 }

@@ -76,6 +76,11 @@ public partial class MainForm : Form
         Exit(-1);
     }
 
+    private void ExitThrowExceptionButton_Click(object sender, EventArgs e)
+    {
+        throw new ApplicationException("A test exception");
+    }
+
     private void StartCalculatorButton_Click(object sender, EventArgs e)
     {
         Start("C:\\Windows\\System32\\calc.exe");
